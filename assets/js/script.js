@@ -159,3 +159,48 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+/* PDF MODAL */
+
+const pdfUrl = './assets/pdf/C.V.pdf';
+
+function showModal() {
+  const modal = document.getElementById('pdf-modal');
+  modal.style.opacity = '1';
+  modal.style.pointerEvents = 'auto';
+}
+
+function closeModal() {
+  const modal = document.getElementById('pdf-modal');
+  modal.style.opacity = '0';
+  modal.style.pointerEvents = 'none';
+}
+
+async function loadPdf() {
+  const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+  const numPages = pdf.numPages;
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  const scale = isMobile ? 1 : 1.5;
+  for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+    const page = await pdf.getPage(pageNum);
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    const viewport = page.getViewport({ scale });
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+    document.getElementById('pdf-viewer').appendChild(canvas);
+    const renderContext = {
+      canvasContext: context,
+      viewport: viewport,
+    };
+    await page.render(renderContext).promise;
+  }
+}
+
+window.onload = loadPdf;
+
+document.getElementById('pdf-modal').addEventListener('click', function (event) {
+  if (event.target === this) {
+    closeModal();
+  }
+});

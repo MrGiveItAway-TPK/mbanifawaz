@@ -27,6 +27,14 @@
 
 <body>
 
+  <!-- PDF MODAL -->
+  <div class="modal-overlay" id="pdf-modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <div id="pdf-viewer"></div>
+    </div>
+    </div>
+
   <!--
     - #MAIN
   -->
@@ -117,6 +125,20 @@
               <p class="contact-title">Location</p>
 
               <address>Amman, Jordan</address>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="newspaper-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Personal Resume (C.V)</p>
+
+              <a href="#" onclick="showModal()" class="contact-link">Open C.V</a>
             </div>
 
           </li>
@@ -1255,6 +1277,7 @@
   <!--
     - custom js link
   -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.8.162/pdf.min.js" integrity="sha512-9Wd08apcJEwm8g3lBTg1UW/njdN0iuuOVWKpyinK3uA7ISAE5PmEZ4y8bZYTXVOE3tlt7aFlCBBLmLt5cUxe2Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="./assets/js/script.js"></script>
 
   <!--
@@ -1262,7 +1285,6 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
 </body>
 
 </html>
