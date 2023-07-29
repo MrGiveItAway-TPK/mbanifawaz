@@ -203,15 +203,17 @@ document.getElementById('pdf-modal').addEventListener('click', function (event) 
   }
 });
 
-function isSafari() {
-  return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+function isSafariOnMobile() {
+  var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  return isSafari && isMobile;
 }
 
 function showButtonIfSafari() {
   var chromeLink = document.getElementById('chrome-link');
   var safariLink = document.getElementById('safari-link');
 
-  if (isSafari()) {
+  if (isSafariOnMobile()) {
     chromeLink.style.display = 'none';
     safariLink.style.display = 'inline-flex';
   } else {
