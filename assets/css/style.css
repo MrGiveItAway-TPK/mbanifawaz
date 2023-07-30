@@ -1900,7 +1900,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 }
 
 /* Style for the modal content container */
-.modal-content {
+.modal-content.pdf {
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
