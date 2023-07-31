@@ -1919,3 +1919,16 @@ textarea.form-input::-webkit-resizer { display: none; }
   color:#FEC361;
   font-size: 4rem;
 }
+
+.ex-links {
+  padding: 1em;
+  text-align: center;
+}
+
+.ex-links a{
+  font-size: 2rem;
+}
+
+.ex-links a:hover{
+  color:var(--orange-yellow-crayola)
+}
