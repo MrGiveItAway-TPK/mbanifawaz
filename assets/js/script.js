@@ -219,8 +219,25 @@ function showButtonIfSafari() {
     safariLink.style.display = 'none';
   }
 }
-function prepare_pdf () {
+
+function sort_links() {
+  const projectList = document.getElementById("project-list");
+  const projectItems = Array.from(projectList.querySelectorAll(".ex-links"));
+  
+  const sortedTitles = projectItems
+    .map((item) => item.querySelector(".project-title").innerText)
+    .sort();
+  
+  projectList.innerHTML = "";
+  sortedTitles.forEach((title) => {
+    const listItem = projectItems.find((item) => item.querySelector(".project-title").innerText === title);
+    projectList.appendChild(listItem);
+  });
+  }
+  
+function init () {
   loadPdf()
   showButtonIfSafari()
+  sort_links()
 }
-window.onload = prepare_pdf()
+window.onload = init()

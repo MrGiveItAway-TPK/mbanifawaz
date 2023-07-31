@@ -1922,7 +1922,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 .ex-links {
   padding: 1em;
-  text-align: center;
+  text-align: lef;
 }
 
 .ex-links a{
