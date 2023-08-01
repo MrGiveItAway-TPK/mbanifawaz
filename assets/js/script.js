@@ -177,8 +177,11 @@ function closeModal() {
 async function loadPdf() {
   const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
   const numPages = pdf.numPages;
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  const scale = isMobile ? 1 : 1.5;
+  
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  const scale = Math.min(viewportWidth / 368, viewportHeight / 368);
+  
   for (let pageNum = 1; pageNum <= numPages; pageNum++) {
     const page = await pdf.getPage(pageNum);
     const canvas = document.createElement('canvas');
